@@ -139,7 +139,6 @@ REACT_APP_API_URL=http://localhost:5000
 - Add Genetic Algorithm (GA) and Particle Swarm Optimization (PSO)
 - Backend multiprocessing for faster optimization
 - Enhanced risk modeling (Sharpe ratio, volatility tracking)
-- Cloud deployment (Render / Vercel)
 
 ## 🧾 License
 
