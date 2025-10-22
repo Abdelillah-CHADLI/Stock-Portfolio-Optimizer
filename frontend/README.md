@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# Stock Portfolio Optimizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A portfolio optimization system using advanced search algorithms including A*, Greedy Search, CSP, and Simulated Annealing. 
 
-## Available Scripts
+Built with Flask (backend) and React (frontend), providing an interactive web interface for simulating and comparing different optimization strategies.
 
-In the project directory, you can run:
+## 📘 Background
 
-### `npm start`
+This project was originally developed as a second-year group project under the module **Introduction to Artificial Intelligence** at the University of Boumerdes (UMBB).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Team members (original version):**
+- Mohamed Abdelillah Chadli
+- Madjd Baghdadi
+- Kossai Baha
+- Yassir Cherdouh
+- Ali Habbeche
+- Mehdi Bouzoul
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Improved and extended version:**
 
-### `npm test`
+The system was later enhanced and refactored by **Mohamed Abdelillah Chadli** — who added a modern frontend (React app) and connected it to the Flask-based backend, offering real-time visualization and easier interaction with the algorithms.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- Portfolio configuration with customizable parameters:
+  - Investment budget
+  - Diversification limits
+  - Risk tolerance levels
+- Stock selection from historical data
+- Multiple optimization algorithms available
+- Performance metrics tracking (ROI, risk, diversification)
+- Interactive graphs and charts
+- Exportable trading history (CSV format)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+Stock-Portfolio-Optimizer/
+├── backend/
+│   ├── app.py                          # Flask backend server
+│   ├── backend/PortfolioOptimizer.py   # Core optimization logic
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   │   └── app.js                      # React main component
+│   └── package.json
+│
+├── my_data/
+│   └── stocks.json                     # Stock price and metadata
+│
+└── README.md
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Backend:**
+- Python (Flask + CORS)
+- Core logic implemented in `PortfolioOptimizer`
+- Exposes `/api/stocks` and `/api/optimize` endpoints
 
-### `npm run eject`
+**Frontend:**
+- React + TailwindCSS + Recharts + Lucide Icons
+- Connects to backend using REST API
+- Provides a dashboard for visualization and control
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Optimization Algorithms
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The system implements four different optimization strategies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+| Algorithm | Description |
+|-----------|-------------|
+| **A*** | Informed search algorithm that finds optimal solutions using admissible heuristics |
+| **Greedy Search** | Fast approximation algorithm that makes locally optimal choices |
+| **CSP** | Constraint Satisfaction Problem solver that ensures all portfolio requirements are met |
+| **Simulated Annealing** | Probabilistic optimization method that can avoid local optima |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Each algorithm offers different trade-offs between execution speed and solution quality. The choice depends on your specific needs - quick results vs optimal solutions.
 
-## Learn More
+## 🖥️ Running the Application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Backend Setup (Flask)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate   # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+python app.py
+```
 
-### Code Splitting
+By default, it runs on:
+```
+http://localhost:5000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2. Frontend Setup (React)
 
-### Analyzing the Bundle Size
+```bash
+cd frontend
+npm install
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Runs on:
+```
+http://localhost:3000
+```
 
-### Making a Progressive Web App
+If necessary, create a `.env` file in `frontend/` with:
+```
+REACT_APP_API_URL=http://localhost:5000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📊 Example Workflow
 
-### Advanced Configuration
+1. Select desired stocks (e.g., AAPL, AMZN, JNJ).
+2. Configure:
+   - Budget = 10,000 USD
+   - Diversification = 50% max per stock
+   - Risk tolerance = Moderate
+3. Choose algorithm (e.g., A*, Greedy, CSP, SA).
+4. Run optimization → visualize results:
+   - Portfolio growth chart
+   - ROI and risk metrics
+   - Allocation pie chart
+   - Trading actions history
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📈 Sample Output
 
-### Deployment
+- **Final Portfolio Value:** $11,320.45
+- **ROI:** +13.2%
+- **Risk:** 4.5%
+- **Diversified Assets:** 5
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+*(Values vary depending on algorithm and dataset.)*
 
-### `npm run build` fails to minify
+## ⚙️ Future Improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Integrate live market data APIs (e.g., Yahoo Finance)
+- Add Genetic Algorithm (GA) and Particle Swarm Optimization (PSO)
+- Backend multiprocessing for faster optimization
+- Enhanced risk modeling (Sharpe ratio, volatility tracking)
+- Cloud deployment (Render / Vercel)
+
+## 🧾 License
+
+This project is for educational and research purposes only. Not intended for financial or investment use.
