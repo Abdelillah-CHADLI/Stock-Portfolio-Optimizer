@@ -6,7 +6,7 @@ Built with Flask (backend) and React (frontend), providing an interactive web in
 
 ## 📘 Background
 
-This project was originally developed as a second-year group project under the module **Introduction to Artificial Intelligence** at the University of Boumerdes (UMBB).
+This project was originally developed as a second-year group project under the module **Introduction to Artificial Intelligence** at the National Higher School of Artificial Intelligence (ENSIA)
 
 **Team members (original version):**
 - Mohamed Abdelillah Chadli
